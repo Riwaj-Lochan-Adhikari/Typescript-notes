@@ -5,7 +5,7 @@ const menu = [
     { name: "Veggie", price: 9 },
 ]
 
-const cashInRegister = 100
+let cashInRegister = 100
 const orderQueue = []
 
 function addNewPizza(pizzaObj) {
@@ -21,11 +21,8 @@ function addNewPizza(pizzaObj) {
  * 4. returns the new order object (just in case we need it later)
  */
 
-function placeOrder(pizzaName,income,orderObject){
-    find(pizzaName);
-    cashInRegister = cashInRegister+income;
-    orderQueue.push(orderObject);
-    return orderObject;    
+function placeOrder(pizzaName){
+   let x = menu.find(function(pizzaName){
+        return  x === pizzaName.name
+    });
 }
-
-// test it tommorow 3:28 of video
