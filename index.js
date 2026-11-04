@@ -5,33 +5,50 @@ const menu = [
     { name: "Veggie", price: 9 },
 ]
 
-const cashInRegister = 100
-const orderQueue = []
-let nextOrderId = 0;
-function addNewPizza(pizzaObj) {
+let cashInRegister = 100
+let nextOrderId = 1
+type Order = {
+    id: number;
+    pizza: { name: string; price: number };
+    status: string;
+}
+
+const orderQueue: Order[] = [];
+
+function addNewPizza(pizzaObj: { name: string; price: number }) {
     menu.push(pizzaObj)
 }
-
-function placeOrder(pizzaName) {
+function placeOrder(pizzaName :string) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
+    if (selectedPizza){
     cashInRegister += selectedPizza.price
-    const newOrder = { pizza: selectedPizza, status: "ordered",orderId: nextOrderId }
-    orderQueue.push(newOrder)
-    return newOrder
+     const newOrder = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
+      orderQueue.push(newOrder)
+      return newOrder; 
+    }
+
+
+   
 }
 
-/**
- * Challenge: write another utility function, completeOrder, that takes an orderId as a parameter
- * finds the correct order in the orderQueue, and marks its status as "completed". For good measure,
- * return the found order from the function.
- * 
- * Note: you'll need to ensure that we're adding IDs to our orders when we create new orders. You can use a global `nextOrderId` variable and increment it every time a new order is created to simulate real IDs being managed for us by a database.
- */
-function completeOrder(orderId){
-  nextOrderId++;
-  let y =  menu.find(pizzaObj => pizzaObj.name === pizzaName)
-  let z = orderQueue[y];
-  z.status = "completed";
-  
-  return z;  
+function completeOrder(orderId : number) {
+    type order = {
+         id: number;
+         pizza:string;
+         status: string;
+    }
+    const order = orderQueue.find(order => order.id === orderId)
+    order.status = "completed"
+    return order
 }
+
+addNewPizza({ name: "Chicken Bacon Ranch", cost: 12 })
+addNewPizza({ name: "BBQ Chicken", cost: 12 })
+addNewPizza({ name: "Spicy Sausage", cost: 11 })
+
+placeOrder("Chicken Bacon Ranch")
+completeOrder("1")
+
+console.log("Menu:", menu)
+console.log("Cash in register:", cashInRegister)
+console.log("Order queue:", orderQueue)
