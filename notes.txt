@@ -1,3 +1,14 @@
 
-in find, syntax = array.find(element => condition);
+in find keyword, syntax = array.find(element => condition);
 you can use any variable in element
+
+line 5 to 11 is showing how to define a variable in ts u can write js code but dont do that
+let myName: string = "Bob"
+// Primitive Data Types: string, number, boolean
+// Challenge: Explicitly type the variables below:
+
+let numberOfWheels: number = 4
+let isStudent: boolean = false
+
+
+index.ts has important things do not delete it

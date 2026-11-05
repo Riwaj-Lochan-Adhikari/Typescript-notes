@@ -1,3 +1,4 @@
+// do not delete this
 const menu = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
@@ -37,17 +38,19 @@ function completeOrder(orderId : number) {
          pizza:string;
          status: string;
     }
-    const order = orderQueue.find(order => order.id === orderId)
+    const order = orderQueue.find(order1 => order1.id === orderId)
+    if (order){
     order.status = "completed"
     return order
+    }
 }
 
-addNewPizza({ name: "Chicken Bacon Ranch", cost: 12 })
-addNewPizza({ name: "BBQ Chicken", cost: 12 })
-addNewPizza({ name: "Spicy Sausage", cost: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
-completeOrder("1")
+completeOrder(1)
 
 console.log("Menu:", menu)
 console.log("Cash in register:", cashInRegister)
