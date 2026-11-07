@@ -12,3 +12,34 @@ let isStudent: boolean = false
 
 
 index.ts has important things do not delete it
+
+type Type_name = xyz
+
+(this is how we define type in ts and always give type's name with capital it's the convention)
+
+// Challenge: finish the object type definition
+
+type Person = {
+    name: string
+    age: number
+    isStudent: boolean
+}
+
+let person1: Person = {
+    name: "Joe",
+    age: 42,
+    isStudent: true
+}
+
+let person2: Person = {
+    name: "Jill",
+    age: 66,
+    isStudent: false
+}
+
+the above code is for extra safety
+
+
+
+https://scrimba.com/learn-typescript-c03c/~07
+start this video from 0:48 tommorow 

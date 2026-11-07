@@ -1,4 +1,7 @@
-// do not delete this
+type pizza = {
+    name:string,
+    price:number
+}
 const menu = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
@@ -8,47 +11,51 @@ const menu = [
 
 let cashInRegister = 100
 let nextOrderId = 1
-type Order = {
-    id: number;
-    pizza: { name: string; price: number };
-    status: string;
-}
+type order  =  {id: number;
+    name:pizza ;
+    status: string;}
+const orderQueue:order[] = []
 
-const orderQueue: Order[] = [];
-
-function addNewPizza(pizzaObj: { name: string; price: number }) {
+function addNewPizza(pizzaObj:pizza) {
     menu.push(pizzaObj)
 }
-function placeOrder(pizzaName :string) {
+
+function placeOrder(pizzaName:string) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
-    if (selectedPizza){
-    cashInRegister += selectedPizza.price
-     const newOrder = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
-      orderQueue.push(newOrder)
-      return newOrder; 
+    if (!selectedPizza) {
+        console.error(`${pizzaName} does not exist in the menu`)
+        return
     }
-
-
-   
+    cashInRegister += selectedPizza.price
+    type newOrder= {
+    id: number;
+    pizza: string;
+    status: string;        
+    }
+    const newOrder:order = { id: nextOrderId++, name: selectedPizza, status: "ordered" }
+    orderQueue.push(newOrder)
+    return newOrder
 }
 
-function completeOrder(orderId : number) {
-    type order = {
-         id: number;
-         pizza:string;
-         status: string;
+/**
+ * Challenge: Teach TS what data type should be used for the 
+ * orderId in the completeOrder function. Then check for any
+ * additional warnings TS comes up with and fix those.
+ */
+
+function completeOrder(orderId:number) {
+    const order = orderQueue.find(order => order.id === orderId)
+    if(!order){
+        return;
     }
-    const order = orderQueue.find(order1 => order1.id === orderId)
-    if (order){
     order.status = "completed"
     return order
-    }
 }
 
 addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
 addNewPizza({ name: "BBQ Chicken", price: 12 })
 addNewPizza({ name: "Spicy Sausage", price: 11 })
-
+ 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
 
