@@ -43,3 +43,11 @@ the above code is for extra safety
 
 https://scrimba.com/learn-typescript-c03c/~07
 start this video from 0:48 tommorow 
+
+
+
+there is something called nested object
+
+
+https://scrimba.com/learn-typescript-c03c/~09/s0qjcs9lco/head
+start this video tommorow
