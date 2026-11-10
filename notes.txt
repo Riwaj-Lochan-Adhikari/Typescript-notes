@@ -51,3 +51,11 @@ there is something called nested object
 
 https://scrimba.com/learn-typescript-c03c/~09/s0qjcs9lco/head
 start this video tommorow
+
+is the snippet from 56 to 61 the ? makes adrress non-compulsory
+type Person = {
+    name: string
+    age: number
+    isStudent: boolean
+    address?: Address
+}
